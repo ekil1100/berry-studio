@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bun remove:*)",
+      "Bash(bun add:*)"
+    ],
+    "deny": []
+  }
+}
