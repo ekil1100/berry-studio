@@ -1,50 +1,36 @@
-# Berry Studio
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-AI 对话应用，基于 Tauri + Next.js + DeepSeek
+## Getting Started
 
-## 功能特性
+First, run the development server:
 
-- ✅ 单一 AI 模型集成（DeepSeek）
-- ✅ 基础对话界面
-- ✅ 消息发送/接收/显示
-- ✅ 简单的聊天界面布局
-- ✅ 黑白主题切换
-- ✅ Markdown 渲染
-- ✅ 代码高亮显示
-
-## 开发环境设置
-
-1. 复制环境变量文件：
 ```bash
-cp .env.local.example .env.local
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-2. 在 `.env.local` 中添加你的 DeepSeek API Key：
-```
-DEEPSEEK_API_KEY=your_api_key_here
-```
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-3. 安装依赖：
-```bash
-bun install
-```
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-4. 启动开发服务器：
-```bash
-bun run dev
-```
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-5. 启动 Tauri 开发模式：
-```bash
-bun run tauri:dev
-```
+## Learn More
 
-## 技术栈
+To learn more about Next.js, take a look at the following resources:
 
-- **前端框架**: Next.js 14 (App Router)
-- **桌面框架**: Tauri
-- **样式**: Tailwind CSS + shadcn/ui
-- **API 通信**: tRPC
-- **状态管理**: TanStack Query
-- **包管理器**: Bun
-- **AI 模型**: DeepSeek
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
