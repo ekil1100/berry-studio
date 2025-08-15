@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Berry Studio
 
-## Getting Started
+一个基于 Next.js 和 Tauri 的桌面聊天应用。
 
-First, run the development server:
+## 技术栈
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **前端**: Next.js 15.4.6 + React 19 + TypeScript
+- **样式**: Tailwind CSS 4 + ShadcnUI 组件库
+- **桌面应用**: Tauri 2.7.1 (Rust)
+- **包管理器**: Bun
+
+## 项目架构
+
+```
+berry-studio/
+├── src/                  # Next.js 前端代码
+│   ├── app/              # App Router 页面
+│   ├── components/       # React 组件
+│   └── lib/              # 工具函数
+├── src-tauri/            # Tauri 后端代码 (Rust)
+└── public/               # 静态资源
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 安装依赖
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+确保你已经安装了以下工具：
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- [Bun](https://bun.sh/) - JavaScript 运行时和包管理器
+- [Rust](https://rustup.rs/) - Tauri 需要 Rust 环境
 
-## Learn More
+安装项目依赖：
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# 安装前端依赖
+bun install
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# 如果需要安装 Tauri CLI（首次开发）
+bun add -D @tauri-apps/cli
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 启动命令
 
-## Deploy on Vercel
+### 开发模式
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+# 启动 Next.js 开发服务器
+bun dev
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# 启动 Tauri 桌面应用（开发模式）
+bun tauri dev
+```
+
+### 构建打包
+
+```bash
+# 构建 Next.js 应用
+bun build
+
+# 构建 Tauri 桌面应用
+bun tauri build
+```
+
+## 开发说明
+
+- Web 版本访问: [http://localhost:3000](http://localhost:3000)
+- 桌面应用会自动启动一个窗口
+- 支持热重载，修改代码后自动更新
+- 使用 ShadcnUI 组件库，采用 "new-york" 风格
+
+## 添加 ShadcnUI 组件
+
+```bash
+# 添加新的 UI 组件
+bunx shadcn@latest add <component-name>
+```
+
+可用组件列表: https://ui.shadcn.com/docs/components
