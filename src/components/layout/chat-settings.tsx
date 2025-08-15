@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { ScrollArea } from '@/components/ui/scroll-area'
-import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Switch } from '@/components/ui/switch'
 import { Slider } from '@/components/ui/slider'
@@ -39,7 +38,7 @@ export function ChatSettings({ onClose }: ChatSettingsProps) {
     codeHighlight: true
   })
 
-  const updateSetting = (key: string, value: any) => {
+  const updateSetting = (key: string, value: unknown) => {
     setSettings(prev => ({ ...prev, [key]: value }))
   }
 
@@ -49,7 +48,7 @@ export function ChatSettings({ onClose }: ChatSettingsProps) {
     children 
   }: { 
     title: string
-    icon: any
+    icon: React.ComponentType<{ className?: string }>
     children: React.ReactNode 
   }) => (
     <div className='mb-6'>

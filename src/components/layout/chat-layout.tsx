@@ -8,11 +8,7 @@ import { Button } from '@/components/ui/button'
 import { PanelLeftClose, PanelLeftOpen, Settings } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
-interface ChatLayoutProps {
-  children?: React.ReactNode
-}
-
-export function ChatLayout({ children }: ChatLayoutProps) {
+export function ChatLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(true)
   const [settingsOpen, setSettingsOpen] = useState(false)
 

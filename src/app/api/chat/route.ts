@@ -4,23 +4,32 @@ import { NextRequest } from 'next/server'
 
 export async function POST(request: NextRequest) {
   try {
-    const { messages } = await request.json()
+    const { message } = await request.json()
 
-    if (!messages || !Array.isArray(messages)) {
+    if (!message) {
       return Response.json(
-        { error: 'Invalid messages format' },
+        { error: 'Message is required' },
         { status: 400 }
       )
     }
 
+    // 检查环境变量
+    if (!process.env.DEEPSEEK_API_KEY) {
+      return Response.json(
+        { error: 'DEEPSEEK_API_KEY is not configured' },
+        { status: 500 }
+      )
+    }
+
     const result = streamText({
-      model: deepseek('deepseek-chat'),
-      messages,
+      model: deepseek('deepseek-chat', {
+        apiKey: process.env.DEEPSEEK_API_KEY,
+      }),
+      messages: [{ role: 'user', content: message }],
       temperature: 0.7,
-      maxTokens: 2048,
     })
 
-    return result.toUIMessageStreamResponse()
+    return result.toTextStreamResponse()
   } catch (error) {
     console.error('Chat API error:', error)
     

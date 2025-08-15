@@ -10,7 +10,6 @@ import {
   MessageSquare, 
   Clock, 
   Trash2, 
-  Edit,
   MoreVertical,
   Pin,
   Archive
@@ -53,7 +52,7 @@ const mockSessions: ChatSession[] = [
 ]
 
 export function ChatSidebar() {
-  const [sessions, setSessions] = useState<ChatSession[]>(mockSessions)
+  const [sessions] = useState<ChatSession[]>(mockSessions)
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedSession, setSelectedSession] = useState<string>('1')
 
