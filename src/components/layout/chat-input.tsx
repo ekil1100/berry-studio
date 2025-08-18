@@ -3,17 +3,17 @@
 import { useState, useRef, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
-import { 
-  Send, 
-  Paperclip, 
-  Mic, 
+import {
+  Send,
+  Paperclip,
+  Mic,
   Square,
   Smile,
   Code,
   Image,
   FileText,
   Sparkles,
-  ChevronUp
+  ChevronUp,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -39,7 +39,7 @@ export function ChatInput({ onSendMessage, isLoading }: ChatInputProps) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (!input.trim() || isLoading) return
-    
+
     onSendMessage(input.trim())
     setInput('')
     setShowQuickActions(false)
@@ -58,7 +58,7 @@ export function ChatInput({ onSendMessage, isLoading }: ChatInputProps) {
       const end = textareaRef.current.selectionEnd
       const newValue = input.substring(0, start) + text + input.substring(end)
       setInput(newValue)
-      
+
       // 设置光标位置
       setTimeout(() => {
         if (textareaRef.current) {
@@ -75,26 +75,26 @@ export function ChatInput({ onSendMessage, isLoading }: ChatInputProps) {
       icon: Code,
       label: '代码',
       action: () => insertText('```\n\n```'),
-      color: 'text-blue-600'
+      color: 'text-blue-600',
     },
     {
       icon: Sparkles,
       label: '总结',
       action: () => insertText('请帮我总结一下：'),
-      color: 'text-purple-600'
+      color: 'text-purple-600',
     },
     {
       icon: FileText,
       label: '解释',
       action: () => insertText('请详细解释：'),
-      color: 'text-green-600'
+      color: 'text-green-600',
     },
     {
       icon: Image,
       label: '分析',
       action: () => insertText('请分析：'),
-      color: 'text-orange-600'
-    }
+      color: 'text-orange-600',
+    },
   ]
 
   return (
@@ -138,7 +138,7 @@ export function ChatInput({ onSendMessage, isLoading }: ChatInputProps) {
               >
                 <Paperclip className='h-4 w-4' />
               </Button>
-              
+
               <Button
                 type='button'
                 variant='ghost'
@@ -146,13 +146,15 @@ export function ChatInput({ onSendMessage, isLoading }: ChatInputProps) {
                 onClick={() => setShowQuickActions(!showQuickActions)}
                 className={cn(
                   'h-8 w-8 text-slate-500 hover:text-slate-700',
-                  showQuickActions && 'text-blue-600 bg-blue-50'
+                  showQuickActions && 'text-blue-600 bg-blue-50',
                 )}
               >
-                <ChevronUp className={cn(
-                  'h-4 w-4 transition-transform',
-                  showQuickActions && 'rotate-180'
-                )} />
+                <ChevronUp
+                  className={cn(
+                    'h-4 w-4 transition-transform',
+                    showQuickActions && 'rotate-180',
+                  )}
+                />
               </Button>
             </div>
 
@@ -167,11 +169,11 @@ export function ChatInput({ onSendMessage, isLoading }: ChatInputProps) {
                 className={cn(
                   'min-h-[48px] max-h-[120px] resize-none border-2 rounded-xl',
                   'focus:border-blue-500 focus:ring-4 focus:ring-blue-100 dark:focus:ring-blue-900/30',
-                  'transition-all duration-200 pr-20'
+                  'transition-all duration-200 pr-20',
                 )}
                 disabled={isLoading}
               />
-              
+
               {/* 输入框内操作按钮 */}
               <div className='absolute right-2 bottom-2 flex items-center gap-1'>
                 <Button
@@ -182,7 +184,7 @@ export function ChatInput({ onSendMessage, isLoading }: ChatInputProps) {
                 >
                   <Smile className='h-3 w-3' />
                 </Button>
-                
+
                 {/* 语音输入按钮 */}
                 <Button
                   type='button'
@@ -191,9 +193,9 @@ export function ChatInput({ onSendMessage, isLoading }: ChatInputProps) {
                   onClick={() => setIsRecording(!isRecording)}
                   className={cn(
                     'h-6 w-6',
-                    isRecording 
-                      ? 'text-red-600 bg-red-50 hover:bg-red-100' 
-                      : 'text-slate-500 hover:text-slate-700'
+                    isRecording
+                      ? 'text-red-600 bg-red-50 hover:bg-red-100'
+                      : 'text-slate-500 hover:text-slate-700',
                   )}
                 >
                   {isRecording ? (
@@ -213,7 +215,7 @@ export function ChatInput({ onSendMessage, isLoading }: ChatInputProps) {
                 'h-12 w-12 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600',
                 'hover:from-blue-600 hover:to-purple-700 shadow-lg hover:shadow-xl',
                 'transform hover:scale-105 transition-all duration-200',
-                'disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none'
+                'disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none',
               )}
             >
               <Send className='h-5 w-5' />
@@ -224,15 +226,17 @@ export function ChatInput({ onSendMessage, isLoading }: ChatInputProps) {
           <div className='flex items-center justify-between mt-3 text-xs text-slate-500 dark:text-slate-400'>
             <div className='flex items-center gap-4'>
               <div className='flex items-center gap-1'>
-                <div className={cn(
-                  'w-2 h-2 rounded-full',
-                  isLoading ? 'bg-yellow-500 animate-pulse' : 'bg-green-500'
-                )}></div>
+                <div
+                  className={cn(
+                    'w-2 h-2 rounded-full',
+                    isLoading ? 'bg-yellow-500 animate-pulse' : 'bg-green-500',
+                  )}
+                ></div>
                 <span>
                   {isLoading ? 'AI 正在思考...' : 'DeepSeek Chat • 准备就绪'}
                 </span>
               </div>
-              
+
               {isRecording && (
                 <div className='flex items-center gap-1 text-red-500'>
                   <div className='w-2 h-2 bg-red-500 rounded-full animate-pulse'></div>

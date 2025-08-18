@@ -6,7 +6,7 @@ import { ScrollArea } from '@/components/ui/scroll-area'
 import { Label } from '@/components/ui/label'
 import { Switch } from '@/components/ui/switch'
 import { Slider } from '@/components/ui/slider'
-import { 
+import {
   X,
   Palette,
   Brain,
@@ -18,7 +18,7 @@ import {
   Zap,
   Moon,
   Sun,
-  Monitor
+  Monitor,
 } from 'lucide-react'
 
 interface ChatSettingsProps {
@@ -35,21 +35,21 @@ export function ChatSettings({ onClose }: ChatSettingsProps) {
     showTimestamp: true,
     autoSave: true,
     markdown: true,
-    codeHighlight: true
+    codeHighlight: true,
   })
 
   const updateSetting = (key: string, value: unknown) => {
-    setSettings(prev => ({ ...prev, [key]: value }))
+    setSettings((prev) => ({ ...prev, [key]: value }))
   }
 
-  const SettingSection = ({ 
-    title, 
-    icon: Icon, 
-    children 
-  }: { 
+  const SettingSection = ({
+    title,
+    icon: Icon,
+    children,
+  }: {
     title: string
     icon: React.ComponentType<{ className?: string }>
-    children: React.ReactNode 
+    children: React.ReactNode
   }) => (
     <div className='mb-6'>
       <div className='flex items-center gap-2 mb-4'>
@@ -58,20 +58,18 @@ export function ChatSettings({ onClose }: ChatSettingsProps) {
           {title}
         </h3>
       </div>
-      <div className='space-y-4 pl-6'>
-        {children}
-      </div>
+      <div className='space-y-4 pl-6'>{children}</div>
     </div>
   )
 
-  const SettingItem = ({ 
-    label, 
+  const SettingItem = ({
+    label,
     description,
-    children 
-  }: { 
+    children,
+  }: {
     label: string
     description?: string
-    children: React.ReactNode 
+    children: React.ReactNode
   }) => (
     <div className='flex items-center justify-between'>
       <div className='space-y-1'>
@@ -82,9 +80,7 @@ export function ChatSettings({ onClose }: ChatSettingsProps) {
           </p>
         )}
       </div>
-      <div className='flex items-center'>
-        {children}
-      </div>
+      <div className='flex items-center'>{children}</div>
     </div>
   )
 
@@ -114,7 +110,7 @@ export function ChatSettings({ onClose }: ChatSettingsProps) {
                 {[
                   { key: 'light', icon: Sun, label: '浅色' },
                   { key: 'dark', icon: Moon, label: '深色' },
-                  { key: 'system', icon: Monitor, label: '系统' }
+                  { key: 'system', icon: Monitor, label: '系统' },
                 ].map(({ key, icon: Icon, label }) => (
                   <Button
                     key={key}
@@ -130,40 +126,40 @@ export function ChatSettings({ onClose }: ChatSettingsProps) {
               </div>
             </SettingItem>
 
-            <SettingItem 
-              label='显示时间戳'
-              description='在消息中显示发送时间'
-            >
+            <SettingItem label='显示时间戳' description='在消息中显示发送时间'>
               <Switch
                 checked={settings.showTimestamp}
-                onCheckedChange={(checked) => updateSetting('showTimestamp', checked)}
+                onCheckedChange={(checked) =>
+                  updateSetting('showTimestamp', checked)
+                }
               />
             </SettingItem>
 
-            <SettingItem 
+            <SettingItem
               label='Markdown 渲染'
               description='自动渲染 Markdown 格式'
             >
               <Switch
                 checked={settings.markdown}
-                onCheckedChange={(checked) => updateSetting('markdown', checked)}
+                onCheckedChange={(checked) =>
+                  updateSetting('markdown', checked)
+                }
               />
             </SettingItem>
 
-            <SettingItem 
-              label='代码高亮'
-              description='启用代码语法高亮'
-            >
+            <SettingItem label='代码高亮' description='启用代码语法高亮'>
               <Switch
                 checked={settings.codeHighlight}
-                onCheckedChange={(checked) => updateSetting('codeHighlight', checked)}
+                onCheckedChange={(checked) =>
+                  updateSetting('codeHighlight', checked)
+                }
               />
             </SettingItem>
           </SettingSection>
 
           {/* AI 模型设置 */}
           <SettingSection title='AI 模型' icon={Brain}>
-            <SettingItem 
+            <SettingItem
               label='创造性'
               description={`当前值: ${settings.temperature[0]}`}
             >
@@ -179,7 +175,7 @@ export function ChatSettings({ onClose }: ChatSettingsProps) {
               </div>
             </SettingItem>
 
-            <SettingItem 
+            <SettingItem
               label='最大令牌数'
               description={`当前值: ${settings.maxTokens[0]}`}
             >
@@ -195,36 +191,33 @@ export function ChatSettings({ onClose }: ChatSettingsProps) {
               </div>
             </SettingItem>
 
-            <SettingItem 
-              label='流式响应'
-              description='实时显示 AI 回复'
-            >
+            <SettingItem label='流式响应' description='实时显示 AI 回复'>
               <Switch
                 checked={settings.streamResponse}
-                onCheckedChange={(checked) => updateSetting('streamResponse', checked)}
+                onCheckedChange={(checked) =>
+                  updateSetting('streamResponse', checked)
+                }
               />
             </SettingItem>
           </SettingSection>
 
           {/* 交互设置 */}
           <SettingSection title='交互' icon={Keyboard}>
-            <SettingItem 
-              label='声音效果'
-              description='播放消息提示音'
-            >
+            <SettingItem label='声音效果' description='播放消息提示音'>
               <Switch
                 checked={settings.soundEffects}
-                onCheckedChange={(checked) => updateSetting('soundEffects', checked)}
+                onCheckedChange={(checked) =>
+                  updateSetting('soundEffects', checked)
+                }
               />
             </SettingItem>
 
-            <SettingItem 
-              label='自动保存'
-              description='自动保存对话历史'
-            >
+            <SettingItem label='自动保存' description='自动保存对话历史'>
               <Switch
                 checked={settings.autoSave}
-                onCheckedChange={(checked) => updateSetting('autoSave', checked)}
+                onCheckedChange={(checked) =>
+                  updateSetting('autoSave', checked)
+                }
               />
             </SettingItem>
           </SettingSection>
@@ -270,7 +263,10 @@ export function ChatSettings({ onClose }: ChatSettingsProps) {
                 <Upload className='h-4 w-4 mr-2' />
                 导入对话记录
               </Button>
-              <Button variant='outline' className='w-full justify-start text-red-600 hover:text-red-700'>
+              <Button
+                variant='outline'
+                className='w-full justify-start text-red-600 hover:text-red-700'
+              >
                 <Trash2 className='h-4 w-4 mr-2' />
                 清除所有数据
               </Button>

@@ -37,60 +37,65 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="p-4 border-t bg-card/50 backdrop-blur-sm">
-      <div className="flex gap-3 items-end">
-        <div className="flex-1 relative">
+    <form onSubmit={handleSubmit} className='p-6'>
+      <div className='flex gap-4 items-end max-w-4xl mx-auto'>
+        <div className='flex-1 relative'>
           <Textarea
             ref={textareaRef}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="输入消息... (Shift + Enter 换行)"
+            placeholder='输入消息... (Shift + Enter 换行)'
             disabled={disabled}
             className={cn(
-              "min-h-12 max-h-32 resize-none",
-              "border-2 border-border/50 focus:border-primary/50",
-              "transition-all duration-200",
-              "bg-background/80 backdrop-blur-sm",
-              "rounded-xl px-4 py-3"
+              'min-h-14 max-h-32 resize-none text-[15px] leading-6',
+              'border-2 border-border/50 focus:border-primary/50',
+              'transition-all duration-200',
+              'bg-white/90 backdrop-blur-sm',
+              'rounded-xl px-5 py-4',
+              'focus:shadow-lg focus:shadow-primary/10',
+              'disabled:bg-gray-50',
             )}
           />
           {disabled && (
-            <div className="absolute inset-0 bg-background/50 rounded-xl flex items-center justify-center">
-              <Loader2 className="w-4 h-4 animate-spin text-muted-foreground" />
+            <div className='absolute inset-0 bg-white/60 rounded-xl flex items-center justify-center backdrop-blur-sm'>
+              <Loader2 className='w-4 h-4 animate-spin text-muted-foreground' />
             </div>
           )}
         </div>
-        
-        <Button 
-          type="submit" 
+
+        <Button
+          type='submit'
           disabled={!message.trim() || disabled}
           className={cn(
-            "h-12 w-12 rounded-xl",
-            "bg-gradient-to-r from-blue-500 to-blue-600",
-            "hover:from-blue-600 hover:to-blue-700",
-            "transition-all duration-200",
-            "shadow-lg hover:shadow-xl",
-            "transform hover:scale-105",
-            "disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+            'h-14 w-14 rounded-xl',
+            'bg-gradient-to-r from-blue-500 to-blue-600',
+            'hover:from-blue-600 hover:to-blue-700',
+            'transition-all duration-200',
+            'shadow-lg hover:shadow-xl hover:shadow-blue-500/25',
+            'transform hover:scale-105 active:scale-95',
+            'disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none',
+            'focus:ring-4 focus:ring-blue-500/20',
           )}
         >
-          <Send className="h-4 w-4" />
+          <Send className='h-5 w-5' />
         </Button>
       </div>
-      
+
       {/* 状态提示 */}
-      <div className="flex items-center justify-between mt-2 text-xs text-muted-foreground">
-        <div className="flex items-center gap-2">
-          <div className={cn(
-            "w-2 h-2 rounded-full transition-colors",
-            disabled ? "bg-yellow-500 animate-pulse" : "bg-green-500"
-          )}></div>
+      <div className='flex items-center justify-between mt-3 text-xs text-muted-foreground max-w-4xl mx-auto px-1'>
+        <div className='flex items-center gap-2'>
+          <div
+            className={cn(
+              'w-2 h-2 rounded-full transition-colors',
+              disabled ? 'bg-yellow-500 animate-pulse' : 'bg-green-500',
+            )}
+          ></div>
           <span>
             {disabled ? 'AI 正在思考...' : 'DeepSeek Chat • 准备就绪'}
           </span>
         </div>
-        <span>{message.length} 字符</span>
+        <span className='tabular-nums'>{message.length} 字符</span>
       </div>
     </form>
   )

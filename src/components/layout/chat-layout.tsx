@@ -15,10 +15,12 @@ export function ChatLayout() {
   return (
     <div className='h-screen flex bg-slate-50 dark:bg-slate-900'>
       {/* 左侧边栏 - 会话历史 */}
-      <div className={cn(
-        'transition-all duration-300 ease-in-out border-r border-slate-200 dark:border-slate-700',
-        sidebarOpen ? 'w-80' : 'w-0 overflow-hidden'
-      )}>
+      <div
+        className={cn(
+          'transition-all duration-300 ease-in-out border-r border-slate-200 dark:border-slate-700',
+          sidebarOpen ? 'w-80' : 'w-0 overflow-hidden',
+        )}
+      >
         <ChatSidebar />
       </div>
 
@@ -39,7 +41,7 @@ export function ChatLayout() {
                 <PanelLeftOpen className='h-4 w-4' />
               )}
             </Button>
-            
+
             <div className='flex flex-col'>
               <h1 className='text-sm font-semibold text-slate-800 dark:text-slate-200'>
                 Berry Studio Chat
@@ -56,7 +58,7 @@ export function ChatLayout() {
               <option>DeepSeek Chat</option>
               <option>DeepSeek Coder</option>
             </select>
-            
+
             <Button
               variant='ghost'
               size='icon'
@@ -73,7 +75,7 @@ export function ChatLayout() {
           <div className='flex-1'>
             <ChatMain />
           </div>
-          
+
           {/* 右侧设置面板 */}
           {settingsOpen && (
             <div className='w-80 border-l border-slate-200 dark:border-slate-700'>
