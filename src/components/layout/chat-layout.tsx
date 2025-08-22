@@ -13,11 +13,11 @@ export function ChatLayout() {
   const [settingsOpen, setSettingsOpen] = useState(false)
 
   return (
-    <div className='h-screen flex bg-slate-50 dark:bg-slate-900'>
+    <div className='h-screen flex bg-slate-50 dark:bg-slate-900 overflow-hidden'>
       {/* 左侧边栏 - 会话历史 */}
       <div
         className={cn(
-          'transition-all duration-300 ease-in-out border-r border-slate-200 dark:border-slate-700',
+          'transition-all duration-300 ease-in-out border-r border-slate-200 dark:border-slate-700 h-full',
           sidebarOpen ? 'w-80' : 'w-0 overflow-hidden',
         )}
       >

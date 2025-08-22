@@ -124,9 +124,9 @@ export function ChatSidebar() {
   )
 
   return (
-    <div className='h-full flex flex-col bg-white dark:bg-slate-900'>
+    <div className='h-full flex flex-col bg-white dark:bg-slate-900 min-h-0'>
       {/* 顶部操作区 */}
-      <div className='p-4 border-b border-slate-200 dark:border-slate-700'>
+      <div className='flex-shrink-0 p-3 border-b border-slate-200 dark:border-slate-700'>
         <Button
           className='w-full mb-3 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700'
           size='sm'
@@ -147,7 +147,7 @@ export function ChatSidebar() {
       </div>
 
       {/* 会话列表 */}
-      <ScrollArea className='flex-1'>
+      <ScrollArea className='flex-1 min-h-0'>
         <div className='py-2'>
           {/* 置顶会话 */}
           {pinnedSessions.length > 0 && (
@@ -180,7 +180,7 @@ export function ChatSidebar() {
       </ScrollArea>
 
       {/* 底部工具栏 */}
-      <div className='p-3 border-t border-slate-200 dark:border-slate-700'>
+      <div className='flex-shrink-0 p-3 border-t border-slate-200 dark:border-slate-700'>
         <div className='flex items-center justify-between text-xs text-slate-500 dark:text-slate-400'>
           <span>{sessions.length} 个对话</span>
           <div className='flex items-center gap-2'>

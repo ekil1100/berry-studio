@@ -37,8 +37,8 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className='p-6'>
-      <div className='flex gap-4 items-end max-w-4xl mx-auto'>
+    <form onSubmit={handleSubmit} className='p-4'>
+      <div className='flex gap-3 items-end max-w-4xl mx-auto'>
         <div className='flex-1 relative'>
           <Textarea
             ref={textareaRef}
@@ -48,17 +48,17 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
             placeholder='输入消息... (Shift + Enter 换行)'
             disabled={disabled}
             className={cn(
-              'min-h-14 max-h-32 resize-none text-[15px] leading-6',
-              'border-2 border-border/50 focus:border-primary/50',
+              'min-h-12 max-h-32 resize-none',
+              'border border-border focus:border-primary',
               'transition-all duration-200',
-              'bg-white/90 backdrop-blur-sm',
-              'rounded-xl px-5 py-4',
-              'focus:shadow-lg focus:shadow-primary/10',
-              'disabled:bg-gray-50',
+              'bg-background',
+              'rounded-lg px-4 py-3',
+              'focus:ring-2 focus:ring-ring',
+              'disabled:bg-muted disabled:cursor-not-allowed',
             )}
           />
           {disabled && (
-            <div className='absolute inset-0 bg-white/60 rounded-xl flex items-center justify-center backdrop-blur-sm'>
+            <div className='absolute inset-0 bg-background/60 rounded-lg flex items-center justify-center backdrop-blur-sm'>
               <Loader2 className='w-4 h-4 animate-spin text-muted-foreground' />
             </div>
           )}
@@ -67,23 +67,15 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
         <Button
           type='submit'
           disabled={!message.trim() || disabled}
-          className={cn(
-            'h-14 w-14 rounded-xl',
-            'bg-gradient-to-r from-blue-500 to-blue-600',
-            'hover:from-blue-600 hover:to-blue-700',
-            'transition-all duration-200',
-            'shadow-lg hover:shadow-xl hover:shadow-blue-500/25',
-            'transform hover:scale-105 active:scale-95',
-            'disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none',
-            'focus:ring-4 focus:ring-blue-500/20',
-          )}
+          size='icon'
+          className='h-12 w-12'
         >
-          <Send className='h-5 w-5' />
+          <Send className='h-4 w-4' />
         </Button>
       </div>
 
       {/* 状态提示 */}
-      <div className='flex items-center justify-between mt-3 text-xs text-muted-foreground max-w-4xl mx-auto px-1'>
+      <div className='flex items-center justify-between mt-2 text-xs text-muted-foreground max-w-4xl mx-auto px-1'>
         <div className='flex items-center gap-2'>
           <div
             className={cn(
